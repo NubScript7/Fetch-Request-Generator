@@ -8,14 +8,47 @@
 </head>
 
 <body>
+  <input tupe="text/plain" class="url" />
   <select name="method" class="method">
     <option value="GET">GET</option>
     <option value="POST">POST</option>
     <option value="PUT">PUT</option>
-    <option value="UPDATE">UPDATE</option>
+    <option value="PATCH">PATCH</option>
     <option value="DELETE">DELETE</option>
   </select>
-  <textarea class="json"></textarea>
+  <textarea class="json" disabled>
+    {
+      foo: "bar"
+    }
+  </textarea>
+  <button class="request">fetch</button>
+  <script>
+    const url = document.querySelector('.url');
+    const methodEl = document.querySelector('.method');
+    const data = document.querySelector('.json');
+    const reqBtn = document.querySelector('.request');
+
+    methodEl.addEventListener('click',()=>{
+      if(methodEl.value==='GET'||methodEl.value==="DELETE"){
+        data.disabled=true
+      }else{
+        data.disabled=false
+      }
+    })
+
+    reqBtn.addEventListener('click',()=>{
+      if(methodEl.value==='GET'||methodEl.value==="DELETE"){
+        fetch(url.value,{
+          method: methodEl.value
+        })
+      }else{
+        fetch(url.value,{
+          method: methodEl.value,
+          body: data.value
+        })
+      }
+    })
+  </script>
 </body>
 
 </html>
