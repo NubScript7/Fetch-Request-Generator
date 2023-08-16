@@ -17,7 +17,6 @@
 
 <body>
   <input tupe="text/plain" class="url" placeholder="url... ex: example.com" />
-  <br>
   <select name="method" class="method">
     <option value="GET">GET</option>
     <option value="POST">POST</option>
@@ -25,13 +24,13 @@
     <option value="PATCH">PATCH</option>
     <option value="DELETE">DELETE</option>
   </select>
-  <br>
+  <br><br><br>
   <textarea class="json" disabled>
     {
       foo: "bar"
     }
   </textarea>
-  <br>
+  <br><br>
   <button class="request">fetch</button>
   <script>
     const url = document.querySelector('.url');
